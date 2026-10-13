@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water-Saving School | Every Drop Matters</title>
+<style>
+:root{--deep:#073b4c;--blue:#118ab2;--mint:#06d6a0;--pale:#eaf9f8;--ink:#18343b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,sans-serif;color:var(--ink);background:#f6fbfc;line-height:1.6}
+header{background:linear-gradient(135deg,#073b4c,#118ab2);color:white;padding:22px max(6%,calc((100% - 1100px)/2)) 64px}
+nav{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{font-weight:800;font-size:1.1rem}nav a{color:white;text-decoration:none;margin-left:16px;font-weight:bold;font-size:.95rem}
+.hero{max-width:1100px;margin:55px auto 0;display:grid;grid-template-columns:1.3fr .7fr;gap:28px;align-items:center}
+.kicker{text-transform:uppercase;letter-spacing:2px;font-size:.8rem;font-weight:bold;color:#9ef5dd}
+h1{font-size:clamp(2.7rem,7vw,5.2rem);line-height:1.02;margin:12px 0 18px;letter-spacing:-2px}.hero p{font-size:1.12rem;color:#e5f7fb;max-width:620px}
+.button{display:inline-block;margin-top:12px;padding:12px 18px;border-radius:12px;background:var(--mint);color:var(--deep);font-weight:800;text-decoration:none}
+.hero-art{text-align:center;padding:25px;border:1px solid #ffffff45;background:#ffffff15;border-radius:28px}.drop{font-size:7rem;line-height:1.25}.hero-art strong{font-size:1.25rem}
+main{max-width:1100px;margin:auto;padding:0 24px}section{padding:48px 0}.eyebrow{color:var(--blue);font-weight:800;letter-spacing:1.5px;text-transform:uppercase;font-size:.8rem}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);line-height:1.15;color:var(--deep);margin:8px 0 14px}.intro{max-width:760px;color:#4c6870}
+.cards,.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-top:24px}.card{padding:23px;background:white;border:1px solid #dcecee;border-radius:18px;box-shadow:0 8px 24px #073b4c0b}.emoji{font-size:2.2rem}.card h3{color:var(--deep);margin:8px 0}.card p,.step p{margin:0;color:#4c6870}
+.callout{margin-top:20px;padding:18px 20px;background:#e1f8f0;border-left:5px solid #06a77d;border-radius:0 14px 14px 0}
+.step{padding:20px;background:var(--pale);border-radius:16px}.number{width:36px;height:36px;display:grid;place-items:center;background:var(--blue);color:white;border-radius:50%;font-weight:bold}
+.checklist{background:var(--deep);color:white;border-radius:22px;padding:28px}.checklist h2{color:white}.checklist .eyebrow{color:#9ef5dd}
+.task{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid #ffffff35}.task input{width:20px;height:20px;margin-top:4px;accent-color:var(--mint);flex-shrink:0}
+.progress{height:9px;background:#ffffff30;border-radius:8px;overflow:hidden;margin:12px 0 6px}#bar{height:100%;width:0;background:var(--mint);transition:width .2s}#count{font-weight:bold;color:#9ef5dd}
+footer{text-align:center;background:#062f3c;color:#e5f7fb;padding:28px 18px}footer p{margin:4px}.small{font-size:.88rem;color:#acd3dc}
+
+.report-panel{background:#fff;border:1px solid #dcecee;border-radius:20px;padding:24px;margin-top:22px;box-shadow:0 8px 24px #073b4c0b}
+.report-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.report-form label,.survey label.field{display:flex;flex-direction:column;gap:6px;font-weight:bold;color:var(--deep)}
+.report-form input,.report-form select,.report-form textarea,.survey select,.survey textarea{width:100%;padding:12px;border:1px solid #b8d4da;border-radius:10px;font:inherit;background:#fff;color:var(--ink)}
+.report-form textarea,.survey textarea{min-height:88px;resize:vertical}
+.wide{grid-column:1/-1}
+.action-btn{border:0;border-radius:11px;background:var(--blue);color:#fff;font-weight:bold;padding:12px 17px;font-size:1rem;cursor:pointer}
+.action-btn:hover{filter:brightness(.92)}
+.form-note{font-size:.9rem;color:#4c6870;margin:8px 0 0}
+.result{display:none;margin-top:14px;padding:14px;border-radius:12px;background:#e1f8f0;color:#073b4c;white-space:pre-wrap}
+.survey{background:#eaf9f8;border-radius:20px;padding:24px;margin-top:22px}
+.survey-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+.survey .field{display:flex;flex-direction:column;gap:6px;font-weight:bold;color:var(--deep)}
+.survey .choice-group{display:flex;gap:12px;flex-wrap:wrap;font-weight:normal}
+.survey .choice-group label{display:flex;gap:7px;align-items:center}
+.survey input[type=radio]{accent-color:var(--blue)}
+@media(max-width:700px){.report-form,.survey-grid{grid-template-columns:1fr}.wide{grid-column:auto}}
+
+@media(max-width:720px){.hero{grid-template-columns:1fr;margin-top:34px}.hero-art{display:none}.cards,.steps{grid-template-columns:1fr}header{padding-bottom:42px}nav a{margin-left:8px}}
+</style>
+</head>
+<body>
+<header>
+<nav><div class="brand">💧 WATERWISE SCHOOL</div><div><a href="#solutions">Solutions</a><a href="#plan">Our plan</a><a href="#report">Report a leak</a><a href="#survey">Survey</a></div></nav>
+<div class="hero"><div><div class="kicker">Every drop matters</div><h1>Make every drop count.</h1><p>Our school loses water through running taps, hidden leaks and rainwater that flows away. A smarter building can save water every day.</p><a class="button" href="#solutions">Discover the solutions ↓</a></div><div class="hero-art"><div class="drop">💧</div><strong>Save water today.<br>Protect tomorrow.</strong><p>Small changes. Big impact.</p></div></div>
+</header>
+<main>
+<section><div class="eyebrow">The challenge</div><h2>Where does the water go?</h2><p class="intro">Water is wasted when taps are left running, leaks go unnoticed and rainwater drains away unused. We can design and manage our school building to prevent waste and reuse water safely.</p></section>
+<section id="solutions"><div class="eyebrow">Smarter buildings</div><h2>3 ways to save water</h2><div class="cards">
+<article class="card"><div class="emoji">🚰</div><h3>1. Install smart taps</h3><p>Sensor or push taps stop automatically. Low-flow aerators reduce the amount of water used while keeping handwashing practical.</p></article>
+<article class="card"><div class="emoji">🔧</div><h3>2. Detect leaks quickly</h3><p>Inspect taps, toilets and pipes regularly. Leak sensors and a simple reporting system help caretakers fix problems before lots of water is lost.</p></article>
+<article class="card"><div class="emoji">🌧️</div><h3>3. Harvest rainwater</h3><p>Collect suitable roof rainwater in covered tanks and use it for gardens where local rules allow. Keep tanks maintained and water separate from drinking supplies.</p></article>
+</div><div class="callout"><strong>Extra building idea:</strong> Add water meters to different areas. If water use suddenly rises, staff can investigate and find hidden leaks sooner.</div></section>
+<section id="plan"><div class="eyebrow">A simple action plan</div><h2>From problem to progress</h2><div class="steps"><div class="step"><div class="number">1</div><h3>Find the waste</h3><p>Check taps and toilets, review water bills and record leaks.</p></div><div class="step"><div class="number">2</div><h3>Make improvements</h3><p>Repair leaks, install efficient fixtures and plan safe rainwater collection.</p></div><div class="step"><div class="number">3</div><h3>Measure the results</h3><p>Read the water meter each month and compare usage over time.</p></div></div></section>
+
+<section id="report"><div class="eyebrow">Spot a leak?</div><h2>Find and report a leak</h2>
+<p class="intro">Use this form to record where water is being wasted so a teacher or caretaker can investigate. This demo prepares a report on this page; it does not automatically send it to school staff.</p>
+<div class="report-panel">
+<form id="leakForm" class="report-form">
+<label>Where is the leak?
+<input name="location" required placeholder="e.g. Ground-floor boys' bathroom"></label>
+<label>What is leaking?
+<select name="type" required><option value="">Choose one</option><option>Running tap</option><option>Dripping tap</option><option>Running toilet</option><option>Pipe leak</option><option>Water pooling / other</option></select></label>
+<label>How serious is it?
+<select name="urgency" required><option value="">Choose urgency</option><option>Low — occasional drip</option><option>Medium — steady leak</option><option>High — water flowing continuously</option></select></label>
+<label>When did you notice it?
+<select name="when" required><option value="">Choose one</option><option>Just now</option><option>Today</option><option>More than a day ago</option><option>Not sure</option></select></label>
+<label class="wide">Extra details (optional)
+<textarea name="details" placeholder="Describe what you noticed. Do not include personal information."></textarea></label>
+<div class="wide"><button class="action-btn" type="submit">🔎 Search / prepare leak report</button><p class="form-note">The button checks the information and creates a report you can show to a teacher or caretaker.</p></div>
+</form><div id="leakResult" class="result" role="status" aria-live="polite"></div></div>
+</section>
+
+<section id="action"><div class="checklist"><div class="eyebrow">Your water-saving mission</div><h2>Can our school do these?</h2><p>Tick each action as it gets completed.</p>
+<label class="task"><input type="checkbox"><span>Turn taps off fully after use.</span></label>
+<label class="task"><input type="checkbox"><span>Report dripping taps or running toilets to a teacher or caretaker.</span></label>
+<label class="task"><input type="checkbox"><span>Choose water-efficient taps and toilets when upgrades are possible.</span></label>
+<label class="task"><input type="checkbox"><span>Explore safe rainwater collection for school plants.</span></label>
+<label class="task"><input type="checkbox"><span>Check the water meter and celebrate progress.</span></label>
+<div class="progress"><div id="bar"></div></div><div id="count">0 of 5 actions completed</div></div></section>
+
+<section id="survey"><div class="eyebrow">Student voice</div><h2>Water-saving survey</h2>
+<p class="intro">Answer this short survey to help the school understand water-saving habits and choose what to improve first.</p>
+<div class="survey"><form id="surveyForm">
+<div class="survey-grid">
+<label class="field">1. Have you noticed a leaking tap or toilet at school?
+<select name="noticed" required><option value="">Choose an answer</option><option>Often</option><option>Sometimes</option><option>Never</option><option>Not sure</option></select></label>
+<label class="field">2. Do you turn taps off fully after use?
+<select name="turnoff" required><option value="">Choose an answer</option><option>Always</option><option>Usually</option><option>Sometimes</option><option>Rarely</option></select></label>
+<label class="field">3. Which solution should the school try first?
+<select name="priority" required><option value="">Choose a solution</option><option>Fix leaks faster</option><option>Install sensor taps</option><option>Collect rainwater for plants</option><option>Check water meters</option><option>Run a student awareness campaign</option></select></label>
+<label class="field">4. How important is saving water at school?
+<select name="importance" required><option value="">Choose an answer</option><option>Very important</option><option>Quite important</option><option>A little important</option><option>Not sure</option></select></label>
+<label class="field wide">5. What other idea would help save water? (optional)
+<textarea name="idea" placeholder="Share an idea..."></textarea></label>
+<div class="wide"><button class="action-btn" type="submit">Submit survey answers</button><p class="form-note">This demo shows a summary on your screen only. It does not send or save responses to a school database.</p></div>
+</div></form><div id="surveyResult" class="result" role="status" aria-live="polite"></div></div>
+</section>
+
+<section><div class="eyebrow">Our goal</div><h2>A school that wastes less</h2><p class="intro">Saving water protects an important resource and can lower school costs. By combining smart equipment, fast repairs and responsible habits, our school can become more sustainable—one drop at a time.</p><p><strong>Remember:</strong> If you spot a leak, tell a teacher or caretaker. Do not try to repair plumbing yourself.</p></section>
+</main>
+<footer><p><strong>💧 WATERWISE SCHOOL</strong></p><p>Every drop matters. Every student can help.</p><p class="small">School sustainability project</p></footer>
+<script>
+const boxes=[...document.querySelectorAll('.task input')];
+function update(){const n=boxes.filter(b=>b.checked).length;document.getElementById('bar').style.width=(n/boxes.length*100)+'%';document.getElementById('count').textContent=n+' of 5 actions completed';}
+boxes.forEach(b=>b.addEventListener('change',update));
+
+document.getElementById('leakForm').addEventListener('submit', function(e){
+ e.preventDefault();
+ const d = new FormData(this);
+ const report = 'LEAK REPORT\\nLocation: '+d.get('location')+'\\nType: '+d.get('type')+'\\nUrgency: '+d.get('urgency')+'\\nNoticed: '+d.get('when')+'\\nDetails: '+(d.get('details')||'None provided');
+ const box=document.getElementById('leakResult'); box.textContent=report+'\\n\\nNext step: show this report to a teacher or caretaker.'; box.style.display='block';
+});
+document.getElementById('surveyForm').addEventListener('submit', function(e){
+ e.preventDefault();
+ const d=new FormData(this);
+ const box=document.getElementById('surveyResult');
+ box.textContent='Thank you for completing the survey!\\n\\nYour answers (shown only on this device):\\n• Leaks noticed: '+d.get('noticed')+'\\n• Turns taps off: '+d.get('turnoff')+'\\n• First priority: '+d.get('priority')+'\\n• Importance: '+d.get('importance')+'\\n• Extra idea: '+(d.get('idea')||'No extra idea added');
+ box.style.display='block';
+});
+
+</script>
+</body></html>
